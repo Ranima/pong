@@ -78,23 +78,34 @@ void updateBall(Ball &ball, Paddle &player1, Paddle &player2)
 	ball.positionY += ball.speedY;
 	if (ball.positionX > 900) {
 		ball.speedX *= -1;
-		ball.positionX = 900;
+		ball.positionX = 450;
+		ball.positionY = 250;
 	}
+
 	if (ball.positionY > 500) {
 		ball.speedY *= -1;
 		ball.positionY = 500;
 	}
-	if (ball.positionX - ball.speedX < 0) {
+
+	if (ball.positionX < 0) {
 		ball.speedX *= -1;
-		ball.positionX = 0;
+		ball.positionX = 450;
+		ball.positionY = 250;
 	}
-	if (ball.positionY - ball.speedY < 0) {
+
+	if (ball.positionY < 0) {
 		ball.speedY *= -1;
 		ball.positionY = 0;
 	}
-	if (ball.positionX == player1.PositionX && ball.positionY == player1.PositionY) {
+
+	if (ball.positionX <= player1.PositionX && ball.positionY >= player1.PositionY && ball.positionY <= player1.PositionY + 100) {
 		ball.speedX *= -1;
-		ball.positionX = 41;
+		ball.positionX = player1.PositionX + 1;
+	}
+
+	if (ball.positionX >= player2.PositionX && ball.positionY >= player2.PositionY && ball.positionY <= player2.PositionY + 100) {
+		ball.speedX *= -1;
+		ball.positionX = player2.PositionX - 1;
 	}
 }
 
@@ -113,4 +124,9 @@ void drawCourt() {
 	sfw::drawLine(898, 2, 2, 2, GREEN);
 	sfw::drawLine(2, 2, 2, 498, BLUE);
 	sfw::drawLine(898, 2, 898, 498, MAGENTA);
+}
+//_______________________________________________________________________________________________
+//I want to keep score for both players
+void keepScore() {
+
 }
