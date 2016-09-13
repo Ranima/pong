@@ -5,8 +5,8 @@
 void GameState::init()
 {
 	ball.init(450, 250, 20, 13, 5, 5);
-	player1.init(40, 250, 100, 5, 'W', 'S');
-	player2.init(860, 250, 100, 5, 'I', 'K');
+	player1.init(40, 250, 100, 5, 'W', 'S', 'A', 'D', 0);
+	player2.init(860, 250, 100, 5, 'I', 'K', 'L', 'J', 0);
 }
 
 void GameState::update()
