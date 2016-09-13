@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Paddle.h"
+#include "Ball.h"
 
 class GameState
 {

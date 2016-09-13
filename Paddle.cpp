@@ -1,53 +1,35 @@
 #include "Paddle.h"
 
+#include "sfwdraw.h"
 
-
-Paddle createPaddle(float x, float y, float size, float speed)
+void Paddle::init(float x, float y, float size, float speed, char up, char down)
 {
-	Paddle retval;
-
-	retval.PositionX = x;
-	retval.PositionY = y;
-	retval.Size = size;
-	retval.Speed = speed;
-
-	return retval;
+	PositionX = x;
+	PositionY = y;
+	Size = size;
+	Speed = speed;
+	upButton = up;
+	downButton = down;
 }
 
-//updatePaddle
-void updatePaddle(Paddle &paddle) {
-	if (sfw::getKey('W')) {
-		paddle.PositionY += paddle.Speed;
-		if (paddle.PositionY + 100 >= 500) {
-			paddle.PositionY -= paddle.Speed;
+void Paddle::update()
+{
+	if (sfw::getKey(upButton)) {
+		PositionY += Speed;
+		if (PositionY + 100 >= 500) {
+			PositionY -= Speed;
 		}
 	}
 
-	if (sfw::getKey('S')) {
-		paddle.PositionY -= paddle.Speed;
-		if (paddle.PositionY <= 0) {
-			paddle.PositionY += paddle.Speed;
-		}
-	}
-}
-
-void updatePaddle2(Paddle &paddle) {
-	if (sfw::getKey(KEY_UP)) {
-		paddle.PositionY += paddle.Speed;
-		if (paddle.PositionY + 100 >= 500) {
-			paddle.PositionY -= paddle.Speed;
-		}
-	}
-
-	if (sfw::getKey(KEY_DOWN)) {
-		paddle.PositionY -= paddle.Speed;
-		if (paddle.PositionY <= 0) {
-			paddle.PositionY += paddle.Speed;
+	if (sfw::getKey(downButton)) {
+		PositionY -= Speed;
+		if (PositionY <= 0) {
+			PositionY += Speed;
 		}
 	}
 }
 
-//drawPaddle
-void drawPaddle(Paddle paddle) {
-	sfw::drawLine(paddle.PositionX, paddle.PositionY, paddle.PositionX, paddle.PositionY + paddle.Size);
+void Paddle::draw()
+{
+	sfw::drawLine(PositionX, PositionY, PositionX, PositionY + Size);
 }
