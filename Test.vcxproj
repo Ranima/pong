@@ -127,15 +127,20 @@
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="pong.cpp" />
     <ClCompile Include="pongapp.cpp" />
+    <ClCompile Include="Splash.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="constdecl.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="MENU.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="pongapp.h" />
+    <ClInclude Include="Splash.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
