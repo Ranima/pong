@@ -2,6 +2,8 @@
 
 #include "Paddle.h"
 #include "Ball.h"
+#include "Score.h"
+#include "constdecl.h"
 
 class GameState
 {
@@ -12,8 +14,11 @@ class GameState
 	Paddle player1;
 	Paddle player2;
 
+	
+
 public:
 	void init();
 	void update();
 	void draw();
+	APP_STATE next();
 };

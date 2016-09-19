@@ -28,7 +28,7 @@ void Splash::step()
 APP_STATE Splash::next()
 {
 	if (timer < 0) {
-		return ENTER_MENU;
+		return ENTER_GAMESTART;
 	}
 
 	return SPLASH;

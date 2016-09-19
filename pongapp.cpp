@@ -1,10 +1,7 @@
-#include "pongapp.h"
 
 #include "sfwdraw.h"
 
-void buildCourt() {
-	sfw::initContext(900, 500);
-}
+
 
 void drawCourt() {
 	sfw::setBackgroundColor(BLACK);

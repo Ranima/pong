@@ -23,3 +23,8 @@ void GameState::draw()
 	player2.draw();
 	ball.draw();
 }
+
+APP_STATE GameState::next()
+{
+	return APP_STATE::GAMESTART;
+}

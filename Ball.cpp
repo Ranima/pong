@@ -21,31 +21,37 @@ void Ball::update(Paddle & player1, Paddle & player2)
 		speedX *= -1;
 		positionX = 450;
 		positionY = 250;
+		if (speedX < -5 || speedX > -5) {
+			speedX = -5;
+		}
 	}
 
-	if (positionY > 500) {
+	if (positionY + 20 > 500) {
 		speedY *= -1;
-		positionY = 500;
+		positionY = 479;
 	}
 
 	if (positionX < 0) {
 		speedX *= -1;
 		positionX = 450;
 		positionY = 250;
+		if (speedX > 5 || speedX < 5) {
+			speedX = 5;
+		}
 	}
 
-	if (positionY < 0) {
+	if (positionY - 20 < 0) {
 		speedY *= -1;
-		positionY = 0;
+		positionY = 21;
 	}
 
-	if (positionX <= player1.PositionX		&&
-		//positionX >= player1.PositionX - 5  &&
+	if (positionX - 20 <= player1.PositionX		&&
+		positionX >= player1.PositionX - 15  &&
 		positionY >= player1.PositionY		&&
 		positionY <= player1.PositionY + 100)
 	{
 		speedX *= -1;
-		positionX = player1.PositionX + 1;
+		positionX = player1.PositionX + 21;
 
 		switch (player1.kind)
 		{
@@ -62,13 +68,13 @@ void Ball::update(Paddle & player1, Paddle & player2)
 		}
 	}
 
-	if (positionX >= player2.PositionX		&&
-		//positionX <= player2.PositionX + 5	&&
+	if (positionX + 20 >= player2.PositionX		&&
+		positionX <= player2.PositionX + 15	&&
 		positionY >= player2.PositionY		&&
 		positionY <= player2.PositionY + 100)
 	{
 		speedX *= -1;
-		positionX = player2.PositionX - 1;
+		positionX = player2.PositionX - 21;
 
 		// apply the effect
 		switch (player2.kind)

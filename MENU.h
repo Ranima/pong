@@ -3,7 +3,6 @@
 
 class MENU {
 	int font;
-	float timer;
 	int select;
 
 public:
