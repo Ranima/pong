@@ -1,7 +1,9 @@
+#include <iostream>
 #include "sfwdraw.h"
 #include "GameState.h"
 #include "constdecl.h"
 #include "Splash.h"
+#include "MENU.h"
 
 
 // 1. GameState
@@ -14,8 +16,10 @@ void main() {
 
 	GameState game;
 	Splash splash;
-
+	Menu menu;
 	
+	splash.init(font); // setup our values
+	menu.init(font);
 
 	APP_STATE state = ENTER_SPLASH;
 
@@ -25,20 +29,22 @@ void main() {
 		{
 			//starts the opening
 		case ENTER_SPLASH:
-			splash.init(font);
+			splash.play();
 			//opening
 		case SPLASH:
-			splash.play();
-			splash.step();
 			splash.draw();
-			splash.next();
+			splash.step();
+			state = splash.next();
+			
 			break;
 			//starts the menu
 		case ENTER_MENU:
-
+			menu.play(); //reset values
 			//is the menu
-		case MENU:
-
+		case MENU:		
+			menu.draw();
+			menu.choose();
+			state = menu.next();
 			break;
 			//starts the game
 		case ENTER_GAMESTART:

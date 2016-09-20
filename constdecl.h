@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+#include "sfwdraw.h"
 
 enum APP_STATE
 {

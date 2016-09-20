@@ -5,10 +5,11 @@
 class Splash
 {
 	int font;
-	float timer;
+	
 
 public:
-	
+	float timer;
+
 	void init(int a_font);
 
 	void play();
