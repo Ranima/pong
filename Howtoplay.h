@@ -1,16 +1,13 @@
 #pragma once
 #include "constdecl.h"
 
-
-class Menu {
+class Howtoplay {
 	int font;
 	int select;
-	bool Wbutton;
-	bool Qbutton;
-	bool Hbutton;
+	bool Ebutton;
 
 public:
-	
+
 	void init(int a_font);
 
 	void play();

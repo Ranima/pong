@@ -1,42 +1,91 @@
-
+#include <iostream>
 #include "sfwdraw.h"
+#include "GameState.h"
+#include "constdecl.h"
+#include "Splash.h"
+#include "MENU.h"
+#include "Howtoplay.h"
+
+// 1. GameState
+// 2. Classify our objects (even further!) :)
 
 
+void main() {
+	sfw::initContext(900, 500);
+	unsigned font = sfw::loadTextureMap("./res/fontmap.png", 16, 16);
 
+	GameState game;
+	Splash splash;
+	Menu menu;
+	Howtoplay HTP;
+	bool playing = true;
 
-/*void main()
-{
-	sfw::initContext(800,600,"NSFW Draw");
+	splash.init(font); // setup our values
+	menu.init(font);
+	HTP.init(font);
 
-	unsigned f = sfw::loadTextureMap("./res/tonc_font.png", 16, 6);
-	unsigned d = sfw::loadTextureMap("./res/fontmap.png",16,16);
-	unsigned r = sfw::loadTextureMap("./res/background.jpg");
-	unsigned u = sfw::loadTextureMap("./res/crosshair.png");
+	APP_STATE state = ENTER_SPLASH;
 
-	float acc = 0;
-	char c = '\0';
-
-	sfw::setBackgroundColor(YELLOW);
-
-	while (sfw::stepContext())
-	{	
-		sfw::drawString(f, " !\"#$%&'()*+,./-\n0123456789:;<=>?\n@ABCDEFGHIJKLMNO\nPQRSTUVWXYZ[\\]^_\n`abcdefghijklmno\npqrstuvwxyz{|}~", 0, 600, 48, 48, 0, ' ');
-		sfw::drawTexture(r, 0, 600, 800, 600, 0, false,0, 0x88888888);
-
-		acc += sfw::getDeltaTime();
-		sfw::drawString(d, "TIME 4 FUN", 400, 300, 48, 48, -acc*24,'\0',MAGENTA);
-
-		
-
-		sfw::drawString(d, "6", 400, 32, 24, 24);
-		sfw::drawString(d, "12", 400, 600 - 32, 24, 24);
-		sfw::drawString(d, "3", 800-32, 300, 24, 24);
-		sfw::drawString(d, "9", 32, 300, 24, 24);
-
-		if(sfw::getMouseButton(MOUSE_BUTTON_RIGHT))
-			sfw::drawTexture(u, sfw::getMouseX(), sfw::getMouseY(), sfw::getTextureWidth(u)/2.5, sfw::getTextureHeight(u)/2.5,45,true,0,0x88ffffff);
-		else sfw::drawTexture(u, sfw::getMouseX(), sfw::getMouseY(), sfw::getTextureWidth(u)/2, sfw::getTextureHeight(u)/2);
+	while (sfw::stepContext() && playing == true) 
+	{
+		switch (state)
+		{
+			//starts the opening
+		case ENTER_SPLASH:
+			splash.play();
+			//opening
+		case SPLASH:
+			splash.draw();
+			splash.step();
+			state = splash.next();
+			break;
+			//starts the menu
+		case ENTER_MENU:
+			menu.play(); //reset values
+			//is the menu
+		case MENU:		
+			menu.draw();
+			menu.choose();
+			state = menu.next();
+			break;
+			//says how to play
+		case ENTER_HOWTOPLAY:
+			HTP.play();
+		case HOWTOPLAY:
+			HTP.draw();
+			HTP.choose();
+			state = HTP.next();
+			break;
+			//starts the game
+		case ENTER_GAMESTATE:
+			game.init(font);
+			//is the game
+		case GAMESTATE:
+			game.update();
+			game.draw();
+			state = game.next();
+			break;
+			//starts stoping the game
+		case ENTER_GAMEEND:
+			 
+			//ends the game
+		case GAMEEND:
+			playing = false;
+			break;
+		}
 	}
-
 	sfw::termContext();
-}*/
+}
+
+//buildCourt();
+//
+//GameState game;
+//game.init();
+//
+//while (sfw::stepContext())
+//{
+//	game.update();
+//	game.draw();
+//}
+//
+//sfw::termContext();

@@ -2,15 +2,20 @@
 
 #include "pongapp.h"
 
-void GameState::init()
+void GameState::init(int a_font)
 {
+	font = a_font;
 	ball.init(450, 250, 20, 12, 5, 5);
-	player1.init(40, 250, 100, 5, 'W', 'S', 'A', 'D', 0);
-	player2.init(860, 250, 100, 5, 'I', 'K', 'L', 'J', 0);
+	player1.init(40, 250, 100, 10, 'W', 'S', 'A', 'D', 'Q', 0);
+	player2.init(860, 250, 100, 10, 'I', 'K', 'L', 'J', 'O', 0);
 }
 
 void GameState::update()
 {
+	if (sfw::getKey('E'))
+	{
+		Ebutton = true;
+	}
 	player1.update();
 	player2.update();
 	ball.update(player1,player2);
@@ -18,6 +23,9 @@ void GameState::update()
 
 void GameState::draw()
 {
+	char buffer[64];
+	sprintf_s(buffer, "Press E to return to menu");
+	sfw::drawString(font, buffer, 20, 20, 14, 14);
 	drawCourt();
 	player1.draw();
 	player2.draw();
@@ -26,5 +34,10 @@ void GameState::draw()
 
 APP_STATE GameState::next()
 {
-	return APP_STATE::GAMESTART;
+	if (Ebutton == true)
+	{
+		Ebutton = false;
+		return ENTER_MENU;
+	}
+	return APP_STATE::GAMESTATE;
 }

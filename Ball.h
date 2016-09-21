@@ -4,6 +4,9 @@
 
 class Ball
 {
+	bool Qkey;
+	bool Okey;
+
 public:
 	float positionX, positionY;
 	float radius;

@@ -46,9 +46,11 @@ void Ball::update(Paddle & player1, Paddle & player2)
 	}
 
 	if (positionX - 20 <= player1.PositionX		&&
-		positionX >= player1.PositionX - 15  &&
-		positionY >= player1.PositionY		&&
-		positionY <= player1.PositionY + 100)
+		positionX >= player1.PositionX - 15		&&
+		positionY >= player1.PositionY			&&
+		positionY <= player1.PositionY + 100	&&
+		positionY + 20 >= player1.PositionY		&&
+		positionY - 20 <= player1.PositionY + 100)
 	{
 		speedX *= -1;
 		positionX = player1.PositionX + 21;
@@ -63,15 +65,20 @@ void Ball::update(Paddle & player1, Paddle & player2)
 		case 2:
 			speedX *= 0.5;
 			break;
+		case 3:
+			speedY *= -1;
+			break;
 		default:
 			printf("That shouldn't have happened!");
 		}
 	}
 
 	if (positionX + 20 >= player2.PositionX		&&
-		positionX <= player2.PositionX + 15	&&
-		positionY >= player2.PositionY		&&
-		positionY <= player2.PositionY + 100)
+		positionX <= player2.PositionX + 15		&&
+		positionY >= player2.PositionY			&&
+		positionY <= player2.PositionY + 100	&&
+		positionY + 20 >= player2.PositionY		&&
+		positionY - 20 <= player2.PositionY + 100)
 	{
 		speedX *= -1;
 		positionX = player2.PositionX - 21;
@@ -87,15 +94,25 @@ void Ball::update(Paddle & player1, Paddle & player2)
 		case 2:
 			speedX *= 0.5;
 			break;
+		case 3:
+			speedY *= -1;
+			break;
 		default:
 			printf("That shouldn't have happened!");
 		}
 	}
+
 	if (speedX >= 20) {
 		speedX = 15;
 	}
 	if (speedX <= -20) {
 		speedX = -15;
+	}
+	if (speedX < 5 && speedX > 0) {
+		speedX = 5;
+	}
+	if (speedX > -5 && speedX < 0) {
+		speedX = -5;
 	}
 }
 

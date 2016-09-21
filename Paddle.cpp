@@ -2,7 +2,7 @@
 
 #include "sfwdraw.h"
 
-void Paddle::init(float x, float y, float size, float speed, char up, char down, char s1, char s2, int typ)
+void Paddle::init(float x, float y, float size, float speed, char up, char down, char s1, char s2, char s3, int typ)
 {
 	PositionX = x;
 	PositionY = y;
@@ -12,6 +12,7 @@ void Paddle::init(float x, float y, float size, float speed, char up, char down,
 	downButton = down;
 	switch1 = s1;
 	switch2 = s2;
+	switch3 = s3;
 	kind = typ;
 }
 
@@ -44,6 +45,10 @@ void Paddle::update()
 	else if (sfw::getKey(switch2))
 	{
 		kind = 2;
+	}
+	else if (sfw::getKey(switch3))
+	{
+		kind = 3;
 	}
 	else
 	{

@@ -4,6 +4,7 @@
 #include "Ball.h"
 #include "Score.h"
 #include "constdecl.h"
+#include "scoreboard.h"
 
 class GameState
 {
@@ -14,10 +15,11 @@ class GameState
 	Paddle player1;
 	Paddle player2;
 
-	
+	int font;
+	bool Ebutton;
 
 public:
-	void init();
+	void init(int a_font);
 	void update();
 	void draw();
 	APP_STATE next();

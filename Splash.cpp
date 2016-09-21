@@ -13,8 +13,12 @@ void Splash::play()
 
 void Splash::draw()
 {
+	sfw::setBackgroundColor(BLACK);
+
 	char buffer[64];
-	sprintf_s(buffer, "Welcome to pong #_#");
+	sprintf_s(buffer, 
+		"Welcome to pong {@}{@}\n"
+		"				\\____/");
 	sfw::drawString(font, buffer, 100, 200, 28, 28);
 	sfw::drawLine(5, 20, 5 + 880 * (timer / 3.f), 20);
 }
