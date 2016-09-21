@@ -1,18 +1,26 @@
 #include "scoreboard.h"
-#include "Ball.h"
 
 void scoreboard::init(int a_font, Ball baall)
 {
 	font = a_font;
 	ball = baall;
+	p1score = 0;
+	p2score = 0;
 }
 
-void update()
+void scoreboard::update()
 {
-	if (ball.)
+	if (ball.positionX <= 0)
+	{
+		p1score += 1;
+	}
+	if (ball.positionX <= 0)
+	{
+		p1score += 1;
+	}
 }
 
-void draw()
+void scoreboard::draw()
 {
 
 }

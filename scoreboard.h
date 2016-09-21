@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Ball.h"
 
 class scoreboard {
 	int font;
