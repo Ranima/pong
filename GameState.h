@@ -15,6 +15,9 @@ class GameState
 	Paddle player1;
 	Paddle player2;
 
+	// Scoreboard
+	//scoreboard score;
+
 	int font;
 	bool Ebutton;
 

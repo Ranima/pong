@@ -5,6 +5,7 @@
 #include "Splash.h"
 #include "MENU.h"
 #include "Howtoplay.h"
+#include "scoreboard.h"
 
 // 1. GameState
 // 2. Classify our objects (even further!) :)
